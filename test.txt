@@ -1,0 +1,49 @@
+MainProgram ACAD_A ;
+Declaration
+## Partie Declaration
+L,S,K : Entier ;
+F,W : Reel ;
+T[15] : Entier ;
+Body
+begin
+{
+    ##Partie Instruction
+    S := a + b ;
+    Prod := D * F - 3 + 4 / 2 ;
+    S := T[3] + 5 ;
+    K := 5 ;
+    S := T[K] + 5 ;
+
+    Write("ACAD A G2") ;
+
+    If (a <= 4) {
+        S := a + b ;
+    }
+    Else {
+        Prod := D * F - 3 + 4 / 2 ;
+    }
+    EndIf ;
+
+    If ((a + 4) == (b - 4)) {
+        S := a + b ;
+    }
+    Else {
+        Prod := D * F - 3 + 4 / 2 ;
+    }
+    EndIf ;
+
+    For a from 2 to b step 1 {
+        S := a + b ;
+        S := T[K] + 5 ;
+        S := T[3] + 5 ;
+    }
+
+    Do {
+        Prod := D * F - 3 + 4 / 2 ;
+    } While (a <= 4) ;
+
+    Do {
+        Prod := D * F - 3 + 4 / 2 ;
+    } While (T[a] <= 4) ;
+}
+end
