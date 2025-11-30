@@ -1,8 +1,8 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-#include "tp.tab.h"
-#include "ts.h"
+#include "bisonFile.tab.h"
+#include "ST.h"
 
 extern YYSTYPE yylval;
 

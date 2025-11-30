@@ -28,9 +28,9 @@ typedef struct NodeSM {
     struct NodeSM *next;
 } NodeSM;         
 
-NodeTS *TS_head = NULL;     // Table des symboles (IDF + CONST)
-NodeSM *TM_head = NULL;     // Table des mots-cles
-NodeSM *TSep_head = NULL;   // Table des separateurs
+NodeTS *TS_head = NULL;    
+NodeSM *TM_head = NULL;   
+NodeSM *TSep_head = NULL;
 
 NodeTS* createNodeTS(TypeTS val) {
     NodeTS *n = (NodeTS*)malloc(sizeof(NodeTS));
