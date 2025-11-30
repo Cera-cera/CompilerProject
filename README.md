@@ -57,13 +57,14 @@ This project is intended for learning **software engineering concepts, compiler 
 
 ## Compilation
 ```bash
-flex tp.l
-bison -d tp.y
-gcc lex.yy.c tp.tab.c ts.c -o parser -lfl
+bison -d bisonFile.y
+flex flexFile.l
+gcc bisonFile.tab.c lex.yy.c  -o parser -lfl
+
 ```
 ## Usage
 ```bash
-./parser < test.txt
+parser.exe < test.txt
 ```
 ## Example Input (`test.txt`)
 ```text
