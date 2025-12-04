@@ -35,6 +35,34 @@ This project is intended for learning **software engineering concepts, compiler 
 ### Display
 - After compilation, the compiler prints all symbol tables in a readable format.
 
+### Semantic Analysis
+The compiler now includes semantic analysis to detect logical and contextual errors after syntax validation.
+This module performs:
+### Variable Declaration Checking
+- Detects using a variable before declaration.
+- Prevents double declarations.
+- Assigns a valid type to each declared variable.
+### Array (Tableau) Semantic Checks
+- Ensures an array is declared before use.
+- Validates array size:
+- Must be greater than 0
+- Detects negative or zero sizes
+- Prevents redeclaration of the same array with a different type or size
+### Type Assignment After Parsing
+- Flex inserts identifiers first without type.
+- Bison assigns the correct type later using semantic rules.
+- Types appear correctly in the final symbol table.
+### Semantic Error Messages
+- The compiler prints semantic diagnostic messages such as:
+- Erreur semantique : 'X' not declared
+- Erreur semantique tableau 'T' deja declarer
+- Erreur semantique: taille invalide pour tableau 'U' (0)
+- Erreur semantique: type incompatible
+
+### Final Semantic Report
+- After parsing, the compiler displays:
+- The updated symbol tables (TS, TM, TSep)
+- With all types, codes, and array sizes resolved
 ---
 
 ## Project Structure
@@ -112,6 +140,52 @@ _____________________________________
         |          , |          SEP
         |          ; |          SEP
 
+```
+
+## Expected Output (including semantic work now )
+   ```
+Erreur semantique  ligne 7: 'T' not declared
+Tableau 'T' declare avec succes: type='Entier', taille=15
+Erreur semantique  ligne 8: 'U' not declared
+Erreur semantique ligne 8: taille invalide pour tableau 'U' (0)
+Erreur semantique  tableau 'T' deja declarer
+Erreur semantique  ligne 10: 'TAB2' not declared
+Erreur semantique ligne 10: taille invalide pour tableau 'TAB2' (-4)
+Erreur semantique  ligne 17: 'M' not declared
+
+
+--- Analyse syntaxique terminee avec succes ---
+
+ ---Analyse sementique ---
+Table des symboles :
+/-------------Table des  IDF---------------/
+____________________________________________________________________
+        | Nom_Entite | Code_Entite | Type_Entite | Val_Entite
+____________________________________________________________________
+        |          M |          IDF |              |
+        |       TAB2 |          IDF |              |
+        |          U |          IDF |              |
+        |          T |      TABLEAU |       Entier |           15
+        |          F |          VAR |         Reel |
+        |          L |          VAR |       Entier |
+        |     ACAD_A |          IDF |              |
+
+/--------------Table des  keywords-------------/
+_____________________________________
+        | NomEntite | CodeEntite
+_____________________________________
+        |       Reel |           KW
+        |     Entier |           KW
+
+/---------------Table des SEP -------------------/
+_____________________________________
+        | NomEntite | CodeEntite
+_____________________________________
+        |          } |          SEP
+        |          { |          SEP
+        |          ] |          SEP
+        |          [ |          SEP
+        |          ; |          SEP
 ```
 ## Notes
 - Constants (like array sizes) are added to TS with their values. 
