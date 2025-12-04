@@ -15,7 +15,7 @@ lettre [a-zA-Z]
 chiffre [0-9]
 IDF {lettre}(_|{lettre}|{chiffre})*
 COMM "##".*
-cst {chiffre}+
+cst -?{chiffre}+
 
 %%  
 
@@ -27,7 +27,8 @@ return entier; }
 "Reel"          { nb_clmn += yyleng;
 inserer(2, "Reel", "KW", "", "");
                     return real; }
-"MainProgram"   { nb_clmn += yyleng; return mainpr; }
+"MainProgram"   { nb_clmn += yyleng; return mainpr;
+inserer(2, "MainProgram", "KW", "", "");  }
 "Declaration"   { nb_clmn += yyleng; return kw_dec; }
 "Body"          { nb_clmn += yyleng; return kw_body; }
 "begin"         { nb_clmn += yyleng; return kw_begin; }
@@ -80,10 +81,10 @@ inserer(2, "Reel", "KW", "", "");
 
 
 {cst}           { nb_clmn += yyleng; yylval.entier = atoi(yytext); 
-inserer(1, "", "", "CONST", yytext); 
+//ne pas inserer 
         return cst; }
 {IDF}           { nb_clmn += yyleng;
-inserer(1, yytext, "IDF", "IDF", "");
+inserer(1, yytext, "IDF", "", "");
  yylval.str = strdup(yytext); return idf; }
 
 

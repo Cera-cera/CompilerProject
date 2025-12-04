@@ -3,16 +3,24 @@
 #include <stdlib.h>
 extern int nb_ligne;
 extern int nb_clmn;
+
+char currentType[20];
 %}
 
 /* UPDATE: suppression de end */
-%token <str>idf pvg v dp_egale String
+
+%token <str> idf String
+%token <entier> cst entier
+%token <numvrg> real
+
+%token  pvg v dp_egale 
 %token plus moins mult divis supegale infegale supr inf equi nonqui
 %token keyword AO AF POU PFER keywordIF keywordELSE keywordENDIF
-%token Dp write mainpr kw_dec kw_body kw_begin kw_end <entier>entier real
+%token Dp write mainpr kw_dec kw_body kw_begin kw_end 
 %token For from to step Do whil
 %token crochetOUV crochetFER 
-%token <entier>cst 
+%type <str> type
+
 %token AND OR NEG
 
 %start S
@@ -39,28 +47,52 @@ S:
 PartieDeclarations:
       DECnormale PartieDeclarations
     | DECvecteur PartieDeclarations
-    | /* vide */
+    | 
 ;
 
 DECnormale:
-    idf partieidf Dp type pvg ;
+    idf partieidf Dp type pvg  {
+        
+        if (estDejaDeclare($1)) {
+            printf("Erreur ligne %d: '%s' is declared \n", nb_ligne, $1);
+        } else {
+            declarerVariableFinale($1, currentType);
+        }
+    };
 
 DECvecteur:
-    idf crochetOUV cst crochetFER Dp type pvg ;
+    idf crochetOUV cst crochetFER Dp type pvg {
+        // verifier si la variable a ete declaree
+        if (!estDejaDeclare($1)) {
+            printf("Erreur semantique  ligne %d: '%s' not declared\n", nb_ligne, $1);
+        }
+        
+        
+        declarerTableauFinal($1, currentType, $3);
+        
+    }
+;
 
 type:
-      entier
-    | real
+      entier { strcpy(currentType, "Entier"); }
+    | real { strcpy(currentType, "Reel"); }
 ;
 
 partieidf:
       v idf partieidf
-    | /* vide */
+      {
+        if (estDejaDeclare($2)) {
+            printf("Erreur semantique ligne %d: '%s' is declared \n", nb_ligne, $2);
+        } else {
+            declarerVariableFinale($2, currentType);
+        }
+    }
+    | 
 ;
 
 PartieInstructions:
       Instruction PartieInstructions
-    | /* vide */
+    | 
 ;
 
 Instruction:
@@ -74,6 +106,7 @@ Instruction:
 /* UPDATE: correction affectation */
 AFF:
     FoneE dp_egale FoneE Next pvg
+    
 ;
 
 WR:
@@ -81,25 +114,49 @@ WR:
 ;
 
 vect:
-    idf crochetOUV idfORcst crochetFER
+    idf crochetOUV idfORcst crochetFER {
+        // verifier si la variable a ete declaree
+        if (!estDejaDeclare($1)) {
+            printf("Erreur semantique  ligne %d: '%s' not declared\n", nb_ligne, $1);
+        }
+        
+    }
 ;
 
 
 FoneE:
-      idf
+      idf  {
+        // verifier si la variable a ete declaree
+        if (!estDejaDeclare($1)) {
+            printf("Erreur semantique  ligne %d: '%s' not declared\n", nb_ligne, $1);
+        }
+        
+    }
     | cst
     | vect
 ;
 
 
 Fone:
-      idf
+      idf {
+        // verifier si la variable a ete declaree
+        if (!estDejaDeclare($1)) {
+            printf("Erreur semantique  ligne %d: '%s' not declared\n", nb_ligne, $1);
+        }
+        
+    }
     | cst
     | vect
 ;
 
 idfORcst:
-      idf
+      idf {
+        // verifier si la variable a ete declaree
+        if (!estDejaDeclare($1)) {
+            printf("Erreur semantique  ligne %d: '%s' not declared\n", nb_ligne, $1);
+        }
+        
+    }
     | cst
 ;
 
@@ -109,8 +166,8 @@ Next:
     | divis cst   
         {
             if ($2 == 0) {
-                printf("Erreur : division par zéro !\n");
-                exit(1);
+                printf("Erreur : division par zero !\n");
+                
             }
         }
     | 
@@ -161,7 +218,13 @@ expressionComp:
 /*************** FOR ***************/
 FOR:
     For idf from Fone to Fone step Fone AO
-    PartieInstructions AF
+    PartieInstructions AF {
+        // verifier si la variable a ete declaree
+        if (!estDejaDeclare($2)) {
+            printf("Erreur semantique  ligne %d: '%s' not declared\n", nb_ligne, $2);
+        }
+        
+    }
 ;
 
 /*************** DO WHILE ***************/

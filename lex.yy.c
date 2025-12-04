@@ -345,19 +345,19 @@ static yyconst int yy_meta[55] =
 
 static yyconst short int yy_base[123] =
     {   0,
-        0,    0,  137,  138,  134,  138,  116,  129,  127,  125,
-      138,  138,  138,  138,  138,  138,  138,  116,  111,  138,
+        0,    0,  138,  139,  135,  139,  117,  130,  128,  126,
+      139,  139,  139,  139,  139,  117,  139,  116,  111,  139,
       110,  109,  108,    0,   80,   17,   13,   79,   85,   89,
-       84,   16,  138,  138,   83,   75,   71,   68,   71,  138,
-       63,  138,  113,  138,  109,  138,    0,  138,   98,  138,
-      138,  138,  138,    0,   75,   75,    0,   61,   22,   61,
+       84,   16,  139,  139,   83,   75,   71,   68,   71,  139,
+       63,  139,  113,  139,  109,  139,    0,  139,   98,  139,
+      139,  139,  139,    0,   75,   75,    0,   61,   22,   61,
         0,   66,   69,   64,   63,   64,   66,   56,   63,    0,
-      138,    0,   49,   56,   60,   71,   54,    0,   50,   51,
+      139,    0,   49,   56,   60,   71,   54,    0,   50,   51,
        50,   42,   49,    0,   46,   42,    0,   54,    0,   48,
        48,   57,    0,   46,   45,   37,    0,    0,   33,    0,
 
        32,   31,    0,    0,    0,   43,    0,   25,   20,   29,
-       26,   19,   20,   31,   17,   17,    0,    0,  138,   72,
+       26,   19,   20,   31,   17,   17,    0,    0,  139,   72,
        57,   75
     } ;
 
@@ -379,7 +379,7 @@ static yyconst short int yy_def[123] =
       119,  119
     } ;
 
-static yyconst short int yy_nxt[193] =
+static yyconst short int yy_nxt[194] =
     {   0,
         4,    5,    6,    7,    8,    9,   10,   11,   12,   13,
        14,   15,   16,   17,   18,   19,   20,   21,   22,   23,
@@ -395,17 +395,17 @@ static yyconst short int yy_nxt[193] =
        86,   85,   84,   83,   82,   81,   80,   79,   78,   75,
        74,   73,   49,   46,   43,   71,   70,   69,   68,   67,
        66,   63,   62,   61,   60,   55,   53,   52,   51,   50,
-       49,   48,   47,   46,   44,   43,  119,    3,  119,  119,
+       49,   49,   48,   47,   46,   44,   43,  119,    3,  119,
       119,  119,  119,  119,  119,  119,  119,  119,  119,  119,
       119,  119,  119,  119,  119,  119,  119,  119,  119,  119,
       119,  119,  119,  119,  119,  119,  119,  119,  119,  119,
       119,  119,  119,  119,  119,  119,  119,  119,  119,  119,
       119,  119,  119,  119,  119,  119,  119,  119,  119,  119,
-      119,  119
+      119,  119,  119
 
     } ;
 
-static yyconst short int yy_chk[193] =
+static yyconst short int yy_chk[194] =
     {   0,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -421,13 +421,13 @@ static yyconst short int yy_chk[193] =
        69,   68,   67,   66,   65,   64,   63,   62,   60,   58,
        56,   55,   49,   45,   43,   41,   39,   38,   37,   36,
        35,   31,   30,   29,   28,   25,   23,   22,   21,   19,
-       18,   10,    9,    8,    7,    5,    3,  119,  119,  119,
+       18,   16,   10,    9,    8,    7,    5,    3,  119,  119,
       119,  119,  119,  119,  119,  119,  119,  119,  119,  119,
       119,  119,  119,  119,  119,  119,  119,  119,  119,  119,
       119,  119,  119,  119,  119,  119,  119,  119,  119,  119,
       119,  119,  119,  119,  119,  119,  119,  119,  119,  119,
       119,  119,  119,  119,  119,  119,  119,  119,  119,  119,
-      119,  119
+      119,  119,  119
 
     } ;
 
@@ -667,7 +667,7 @@ yy_match:
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + (unsigned int) yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 138 );
+		while ( yy_base[yy_current_state] != 139 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -710,230 +710,231 @@ inserer(2, "Reel", "KW", "", "");
 case 3:
 YY_RULE_SETUP
 #line 30 "flexFile.l"
-{ nb_clmn += yyleng; return mainpr; }
+{ nb_clmn += yyleng; return mainpr;
+inserer(2, "MainProgram", "KW", "", "");  }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 31 "flexFile.l"
+#line 32 "flexFile.l"
 { nb_clmn += yyleng; return kw_dec; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 32 "flexFile.l"
+#line 33 "flexFile.l"
 { nb_clmn += yyleng; return kw_body; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 33 "flexFile.l"
+#line 34 "flexFile.l"
 { nb_clmn += yyleng; return kw_begin; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 34 "flexFile.l"
+#line 35 "flexFile.l"
 { nb_clmn += yyleng; return kw_end; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 36 "flexFile.l"
+#line 37 "flexFile.l"
 { nb_clmn += yyleng; return write; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 38 "flexFile.l"
+#line 39 "flexFile.l"
 { nb_clmn += yyleng; return keywordIF; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 39 "flexFile.l"
+#line 40 "flexFile.l"
 { nb_clmn += yyleng; return keywordELSE; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 40 "flexFile.l"
+#line 41 "flexFile.l"
 { nb_clmn += yyleng; return keywordENDIF; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 42 "flexFile.l"
+#line 43 "flexFile.l"
 { nb_clmn += yyleng; return For; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 43 "flexFile.l"
+#line 44 "flexFile.l"
 { nb_clmn += yyleng; return from; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 44 "flexFile.l"
+#line 45 "flexFile.l"
 { nb_clmn += yyleng; return to; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 45 "flexFile.l"
+#line 46 "flexFile.l"
 { nb_clmn += yyleng; return step; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 46 "flexFile.l"
+#line 47 "flexFile.l"
 { nb_clmn += yyleng; return Do; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 47 "flexFile.l"
+#line 48 "flexFile.l"
 { nb_clmn += yyleng; return whil; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 50 "flexFile.l"
+#line 51 "flexFile.l"
 { nb_clmn += yyleng; inserer(3, "[", "SEP", "", ""); return crochetOUV; } 
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 51 "flexFile.l"
+#line 52 "flexFile.l"
 { nb_clmn += yyleng; inserer(3, "]", "SEP", "", ""); return crochetFER; } 
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 52 "flexFile.l"
+#line 53 "flexFile.l"
 { nb_clmn += yyleng; inserer(3, ";", "SEP", "", ""); return pvg; } 
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 53 "flexFile.l"
+#line 54 "flexFile.l"
 { nb_clmn += yyleng; inserer(3, ",", "SEP", "", ""); return v; } 
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 54 "flexFile.l"
+#line 55 "flexFile.l"
 { nb_clmn += yyleng; return dp_egale; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 55 "flexFile.l"
+#line 56 "flexFile.l"
 { nb_clmn += yyleng; return plus; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 56 "flexFile.l"
+#line 57 "flexFile.l"
 { nb_clmn += yyleng; return moins; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 57 "flexFile.l"
+#line 58 "flexFile.l"
 { nb_clmn += yyleng; return mult; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 58 "flexFile.l"
+#line 59 "flexFile.l"
 { nb_clmn += yyleng; return divis; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 59 "flexFile.l"
+#line 60 "flexFile.l"
 { nb_clmn += yyleng; return POU; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 60 "flexFile.l"
+#line 61 "flexFile.l"
 { nb_clmn += yyleng; return PFER; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 61 "flexFile.l"
+#line 62 "flexFile.l"
 { nb_clmn += yyleng; return Dp; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 62 "flexFile.l"
+#line 63 "flexFile.l"
 { nb_clmn += yyleng;inserer(3, "{", "SEP", "", ""); return AO; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 63 "flexFile.l"
+#line 64 "flexFile.l"
 { nb_clmn += yyleng; inserer(3, "}", "SEP", "", ""); return AF; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 66 "flexFile.l"
+#line 67 "flexFile.l"
 { nb_clmn += yyleng; yylval.str = strdup(yytext); return String; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 69 "flexFile.l"
+#line 70 "flexFile.l"
 { nb_clmn += yyleng; return supegale; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 70 "flexFile.l"
+#line 71 "flexFile.l"
 { nb_clmn += yyleng; return infegale; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 71 "flexFile.l"
+#line 72 "flexFile.l"
 { nb_clmn += yyleng; return supr; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 72 "flexFile.l"
+#line 73 "flexFile.l"
 { nb_clmn += yyleng; return inf; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 73 "flexFile.l"
+#line 74 "flexFile.l"
 { nb_clmn += yyleng; return equi; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 74 "flexFile.l"
+#line 75 "flexFile.l"
 { nb_clmn += yyleng; return nonqui; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 77 "flexFile.l"
+#line 78 "flexFile.l"
 { nb_clmn += yyleng; return AND; }   
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 78 "flexFile.l"
+#line 79 "flexFile.l"
 { nb_clmn += yyleng; return OR; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 79 "flexFile.l"
+#line 80 "flexFile.l"
 { nb_clmn += yyleng; return NEG; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 82 "flexFile.l"
+#line 83 "flexFile.l"
 { nb_clmn += yyleng; yylval.entier = atoi(yytext); 
-inserer(1, "", "", "CONST", yytext); 
+//ne pas inserer 
         return cst; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 85 "flexFile.l"
+#line 86 "flexFile.l"
 { nb_clmn += yyleng;
-inserer(1, yytext, "IDF", "IDF", "");
+inserer(1, yytext, "IDF", "", "");
  yylval.str = strdup(yytext); return idf; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 90 "flexFile.l"
+#line 91 "flexFile.l"
 { nb_clmn += yyleng; }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 93 "flexFile.l"
+#line 94 "flexFile.l"
 { nb_ligne++; nb_clmn = 1; }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 94 "flexFile.l"
+#line 95 "flexFile.l"
 { nb_clmn += yyleng; }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 97 "flexFile.l"
+#line 98 "flexFile.l"
 {
     printf("Erreur lexicale sur '%s' ligne %d col %d\n", yytext, nb_ligne, nb_clmn);
     nb_clmn += yyleng;
@@ -941,10 +942,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 102 "flexFile.l"
+#line 103 "flexFile.l"
 ECHO;
 	YY_BREAK
-#line 948 "lex.yy.c"
+#line 949 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1830,7 +1831,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 102 "flexFile.l"
+#line 103 "flexFile.l"
 
 
 

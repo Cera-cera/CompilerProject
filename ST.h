@@ -2,6 +2,8 @@
 #include <string.h>   // pour strcpy, strcmp
 #include <stdlib.h>   // pour malloc, atoi, free
 #include <stdio.h>    
+extern int nb_ligne;
+extern int nb_clmn;
 
 
 typedef struct {
@@ -63,7 +65,7 @@ int rechercherSM(NodeSM *head, char entite[]) {
     int pos = 0;
 
     while (temp != NULL) {
-        if (strcmp(entite, temp->data.nomEntite) == 0)
+        if (strcmp(entite, temp->data.nomEntite) == 0) 
             return pos;
         temp = temp->next;
         pos++;
@@ -168,4 +170,74 @@ void afficher() {
     }
 
     printf("\n");
+    
+}
+
+ 
+         // le flex ne remplis pas le champ type ,et donc je verifier le champ si il est rempli double declaration 
+         // sinon inserer le type               
+    int estDejaDeclare(char *nom) {
+    NodeTS *temp = TS_head;
+    while (temp != NULL) {
+        if (strcmp(nom, temp->data.name) == 0) {
+            if (strlen(temp->data.type) > 0) // type field is filled
+                return 1; 
+            else
+                return 0; // type field is empty
+        }
+        temp = temp->next;
+    }
+    return 0;
+}
+               
+
+     void declarerVariableFinale(char *nom, char *typeVar) {
+         NodeTS *temp = TS_head;
+             while (temp != NULL) {
+        if (strcmp(nom, temp->data.name) == 0) {
+            strcpy(temp->data.type, typeVar);
+            strcpy(temp->data.code, "VAR");
+            return;
+        }
+        temp = temp->next;
+    }
+}
+
+  void declarerTableauFinal(char *nom, char *typeElem, int taille) {
+    
+    if (estDejaDeclare(nom)) {
+        printf("Erreur semantique  tableau '%s' deja declarer \n",  nom);
+        return;
+    }
+    
+    
+    if (taille <= 0) {
+        printf("Erreur semantique ligne %d: taille invalide pour tableau '%s' (%d)\n", 
+               nb_ligne, nom, taille);
+        return;
+    }
+    
+    // elle n ete pas encore declarer par bison et aussi type valide alors on peut le declarer
+
+    NodeTS *temp = TS_head;
+    while (temp != NULL) {
+        if (strcmp(nom, temp->data.name) == 0) {
+            
+            //update 
+            strcpy(temp->data.type, typeElem);    // Type element
+            strcpy(temp->data.code, "TABLEAU");   // marquer comme tableau
+            
+            // Stocker la taille
+            char tailleStr[20];
+            sprintf(tailleStr, "%d", taille);
+            strcpy(temp->data.val, tailleStr);
+            
+           printf("Tableau '%s' declare avec succes: type='%s', taille=%d\n", 
+                   nom, typeElem, taille);
+            return;
+        }
+        temp = temp->next;
+    }
+    
+    printf("erreur lors de la declaration du tableau '%s'\n", nom);
 }
